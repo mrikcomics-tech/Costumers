@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>إدارة الزبائن والرحلات</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d4a3b">
+</head>
+<body>
+<header>
+  <div class="header-title">
+    <h1>إدارة الزبائن<br>والرحلات</h1>
+    <small id="syncStatusText">غير متصل بالمزامنة</small>
+  </div>
+  <button id="syncBtn" class="sync-btn" onclick="syncData()">↻ مزامنة</button>
+</header>
+
+<nav class="tabs-nav">
+  <button class="tab-link active" onclick="openTab(event,'tab-customers')">الزبائن</button>
+  <button class="tab-link" onclick="openTab(event,'tab-add')">إضافة</button>
+  <button class="tab-link" onclick="openTab(event,'tab-trips')">الرحلات</button>
+  <button class="tab-link" onclick="openTab(event,'tab-settings')">الإعدادات</button>
+</nav>
+
+<main>
+<section id="tab-customers" class="tab-content active">
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="بحث..." oninput="filterCustomers()">
+    <button onclick="clearSearch()" class="clear-btn">مسح</button>
+  </div>
+  <div class="filters-grid">
+    <select id="filterStatus" onchange="filterCustomers()"><option value="الكل">كل الحالات</option></select>
+    <select id="filterRole" onchange="filterCustomers()"><option value="الكل">كل الأدوار</option></select>
+    <select id="filterRoom" onchange="filterCustomers()"><option value="الكل">كل الغرف</option></select>
+    <select id="filterWilaya" onchange="filterCustomers()"><option value="الكل">كل الولايات</option></select>
+  </div>
+  <div class="record-count">عدد السجلات: <span id="recordCount">0</span></div>
+  <div id="customersList" class="list-container"></div>
+</section>
+
+<section id="tab-add" class="tab-content">
+  <form id="customerForm">
+    <div class="form-group"><label>رقم الهاتف</label><input type="tel" id="f_phone" required></div>
+    <div class="form-group"><label>الولاية</label><select id="f_wilaya" required></select></div>
+    <div class="form-group"><label>الاسم</label><input type="text" id="f_name" required></div>
+    <div class="form-group"><label>الطلب / الرحلة</label><select id="f_request"></select></div>
+    <div class="form-group">
+      <label>طلب يدوي</label>
+      <input type="text" id="f_manual_request" placeholder="أدخل الطلب يدوياً إذا لم يكن في القائمة">
+      <button type="button" class="action-btn mt-5" onclick="useManualRequest()">استخدام الطلب اليدوي</button>
+    </div>
+    <div class="form-group"><label>الدور</label><select id="f_role"></select></div>
+    <div class="form-group"><label>حالة الزبون</label><select id="f_status"></select></div>
+    <div class="form-group"><label>عدد الأشخاص</label><input type="number" id="f_count" value="1" min="1" max="99" required></div>
+    <div class="form-group"><label>الغرفة</label><select id="f_room"></select></div>
+    <div class="form-actions">
+      <button type="button" class="clear-form-btn" onclick="resetCustomerForm()">تفريغ الحقول</button>
+      <button type="submit" class="save-btn">إضافة / حفظ البيانات</button>
+    </div>
+  </form>
+</section>
+
+<section id="tab-trips" class="tab-content">
+  <div class="trip-add-container">
+    <input type="text" id="newTripName" placeholder="اسم الرحلة الجديدة">
+    <button onclick="addTrip()" class="save-btn">إضافة رحلة</button>
+  </div>
+  <div class="list-container" id="tripsList"></div>
+</section>
+
+<section id="tab-settings" class="tab-content">
+  <div class="settings-card">
+    <p>تطبيق إدارة الزبائن - نسخة الهاتف</p>
+    <p class="small-note">تعمل البيانات محلياً، وعند توفر الإنترنت اضغط «مزامنة» لتبادل التغييرات مع الخادم.</p>
+    <button onclick="forceSync()" class="save-btn full">مزامنة إجبارية</button>
+    <button onclick="clearLocalCache()" class="danger-btn full">مسح البيانات المحلية</button>
+  </div>
+</section>
+</main>
+
+<script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(console.error);
+  });
+}
+</script>
+</body>
+</html>

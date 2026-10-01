@@ -1,0 +1,45 @@
+*{box-sizing:border-box;font-family:Tahoma,Arial,sans-serif}
+html,body{direction:rtl}
+body{margin:0;background:#f9fbfc;color:#333;padding-bottom:20px}
+header{background:#0d4a3b;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.header-title h1{margin:0;font-size:1.2rem;line-height:1.4}
+.header-title small{font-size:.75rem;color:#a8d5ba}
+.sync-btn{background:transparent;color:#fff;border:1px solid #a8d5ba;padding:8px 15px;border-radius:20px;font-size:.9rem;cursor:pointer}
+.sync-btn:disabled{opacity:.5}
+.tabs-nav{display:flex;background:#fff;border-bottom:1px solid #ddd;position:sticky;top:72px;z-index:9}
+.tab-link{flex:1;background:none;border:none;padding:12px 0;font-size:1rem;color:#555;cursor:pointer;border-bottom:3px solid transparent}
+.tab-link.active{color:#0d4a3b;font-weight:bold;border-bottom-color:#0d4a3b}
+.tab-content{display:none;padding:15px}
+.tab-content.active{display:block}
+.form-group{margin-bottom:12px;display:flex;flex-direction:column}
+.form-group label{text-align:right;font-size:.9rem;margin-bottom:5px;color:#444;font-weight:bold}
+input,select{padding:10px;border:1px solid #ccc;border-radius:4px;font-size:1rem;background:#fff;direction:rtl}
+input:focus,select:focus{outline:2px solid rgba(13,74,59,.15);border-color:#0d4a3b}
+.mt-5{margin-top:5px}
+.action-btn{background:#f0f0f0;border:1px solid #ccc;padding:10px;border-radius:4px;color:#333;cursor:pointer}
+.form-actions{display:flex;gap:10px;margin-top:20px}
+.form-actions button{flex:1;padding:12px;font-size:1rem;border-radius:4px;cursor:pointer;font-weight:bold}
+.clear-form-btn{background:#fff;border:1px solid #ccc;color:#333}
+.save-btn{background:#0d4a3b;color:#fff;border:none;padding:10px 15px;border-radius:4px;cursor:pointer}
+.search-container{display:flex;gap:10px;margin-bottom:15px}
+.search-container input{flex:1}
+.clear-btn{background:#fff;border:1px solid #ccc;padding:0 15px;border-radius:4px;cursor:pointer}
+.filters-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:15px}
+.record-count{text-align:right;font-weight:bold;color:#0d4a3b;margin-bottom:10px}
+.list-container{display:flex;flex-direction:column;gap:10px}
+.card{background:#fff;padding:15px;border-radius:6px;border:1px solid #e0e0e0;border-right:4px solid #0d4a3b;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.card h3{margin:0 0 8px;font-size:1.1rem;color:#0d4a3b}
+.card p{margin:4px 0;font-size:.9rem;color:#444}
+.card-actions{display:flex;gap:8px;margin-top:12px}
+.card-actions button{flex:1;padding:9px;border-radius:4px;border:1px solid #ccc;cursor:pointer}
+.edit-btn{background:#eef5f2}
+.delete-btn{background:#fff1f1;color:#b42318;border-color:#e0aaaa!important}
+.trip-add-container{display:flex;gap:10px;margin-bottom:20px}
+.trip-add-container input{flex:1}
+.trip-item{background:#fff;padding:12px;border-radius:4px;border:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}
+.trip-item button{background:#dc3545;color:#fff;border:none;border-radius:4px;padding:5px 10px;cursor:pointer}
+.settings-card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:18px;text-align:center}
+.small-note{font-size:.85rem;color:#666;line-height:1.7}
+.full{width:100%;margin-top:10px}
+.danger-btn{background:#fff;color:#b42318;border:1px solid #e0aaaa;padding:10px 15px;border-radius:4px;cursor:pointer;width:100%;margin-top:10px}
+.empty{background:#fff;border:1px dashed #ccc;border-radius:8px;padding:20px;text-align:center;color:#777}
